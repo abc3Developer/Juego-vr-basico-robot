@@ -1,0 +1,699 @@
+  <!DOCTYPE html>
+<html>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>                                               
+                                                     <!-- tween.js  -->
+    <meta charset="utf-8" />
+    <title>abcVR.12</title>
+    <script src="js/aframe-master.js"></script>
+    <script src="js/aframe-physics-system.min.js"></script>
+    <script src="js/aframe-extras.min.js"></script>
+    <script src="js/playerabc.js"></script>
+    <script src="js/robot.js"></script>
+    <script src="js/personalizar.js"></script>
+    <script src="js/nave.js"></script>
+  </head>
+  <body class="a-body" onload="tecla5(); teclay(); teclac(); saltarr(); posinavf();">
+     <a-scene id="scene" debug="" physics="debug: true" class="fullscreen" canvas="" inspector="" keyboard-shortcuts="" screenshot="" vr-mode-ui="" auto-enter-vr="">
+      <a-entity id="blueTPSphere" sound="src:#fx_teleport; poolSize:5; volume:0.2" static-movement geometry="primitive:sphere;radius:0.5" material="opacity:0;color:yellow;" position="1.526 2.884 -5.2" visible="false"></a-entity>
+      <a-entity id="blueTPSphere-2" sound="src:#fx_teleport; poolSize:5; volume:0.2" static-movement geometry="primitive:sphere;radius:0.5" material="opacity:0;color:yellow;" position="1.464 2.884 7.124" visible="false"></a-entity>
+      <a-entity id="blueTPSphere-3" sound="src:#fx_teleport; poolSize:5; volume:0.2" static-movement  geometry="primitive:sphere;radius:0.5" material="opacity:0;color:yellow;" position="-5.077 2.884 7.124" visible="false"></a-entity>
+      <a-entity id="blueTPSphere-4" sound="src:#fx_teleport; poolSize:5; volume:0.2" static-movement  geometry="primitive:sphere;radius:0.5" material="opacity:0;color:yellow;" position="5.395 2.884 7.124" visible="false"></a-entity>
+      <a-entity id="blueTPSphere-5" sound="src:#fx_teleport; poolSize:5; volume:0.2" static-movement  geometry="primitive:sphere;radius:0.5" material="opacity:0;color:yellow;" position="1.464 2.884 2.571" visible="false"></a-entity>
+      <a-entity id="pointLight" light="angle:0;intensity:1.4;type:hemisphere" position="0 1009 2"></a-entity>
+<a-entity sound="src:#bg_music; autoplay:true; loop:true; volume:0.05" camera="" id="player" player="health: 200" userheight="2" universal-controls="" kinematic-body="" position="75 2 -14" velocity="" gamepad-controls="" keyboard-controls="" touch-controls="" hmd-controls="" mouse-controls="">
+        <a-entity sound="src:#bg_music"></a-entity>
+      	<a-entity position="0 0.1510 -0.2" material="opacity:0.7;shader:flat;transparent:true;color:red" geometry="primitive:plane;height:1.75;width:20" text="align:center;color:black;opacity:0.7;shader:flat;transparent:true;value:JUEGOS_VR PERSONALIZADOS!! ABC_VR;width:20" id="text-health-player" scale="0.01 0.01 0.01"></a-entity>
+<!-- ------------------------------------balas------------------------- -->
+        <a-entity id="bala" position="0 0 0" material="opacity:0;color:blue;" geometry="primitive:cylinder;height:0.2;radius:0.2;" scale="0.01 0.01 0.01" visible="false">
+          <!-- <a-animation id="balanim" attribute="position" to="0 0 -2.5" direction="next" repeat="infinite" easing="linear" dur="500"></a-animation> -->
+        </a-entity>
+        <a-entity id="balas1" position="0 0 0" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas2" position="0 0 -0.1" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas3" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas4" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas5" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas6" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas7" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas8" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas9" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+        <a-entity id="balas10" position="0 0 -0.2" material="color:blue;" geometry="primitive:cylinder;height:0.1;radius:0.1;" scale="0.01 0.01 0.01" visible="false">
+        </a-entity>
+<!-- ------------------------------------panel inspector abc------------------------- -->
+<a-entity position="0 0.1510 -0.2" material="opacity:0.7;shader:flat;transparent:true;color:red" geometry="primitive:plane;height:1.75;width:20" text="align:center;color:black;opacity:0.5;shader:flat;transparent:true;value:" scale="0.01 0.01 0.01"></a-entity>
+<!-- <a-animation id="saltar" attribute="rotation" to="0 0 0" direction="next" repeat="infinite" easing="linear" dur="1500"></a-animation> -->
+<!-- avatar -->
+<a-box id="zapato0" position="-0.05 25.65 0" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="zapato00" position="0.35 25.65 0" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>  
+<a-box id="pierna0" position="0 26.1 0" rotation="0 0 -5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pierna00" position="0.3 26.1 0" rotation="0 0 5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon0" position="0 26.5 0" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon00" position="0.3 0.5 0" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon000" position="0.15 0.7 0" rotation="0 0 0" width="0.5" height="0.2" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="cuerpo0" position="0.15 1 0" rotation="0 0 0" width="0.6" height="0.6" depth="0.35" color="rgb(185, 0, 0)" static-body>
+</a-box>
+<a-box id="brazo0" position="-0.2 0.95 0" rotation="0 0 -15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="brazo00" position="0.5 0.95 0" rotation="0 0 15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<!--  --------------------cabeza 2 ------------------------------------------>
+<a-sphere id="cabeza0" position="0.15 1.6 0" rotation="0 0 0" radius="0.33" material="color:rgb(255, 175, 71);roughness:1" text="color:yellow;opacity:0;" static-body>
+</a-sphere>
+<a-sphere id="ojo0" position="0.05 1.63 -0.7" rotation="0 0 0" radius="0.04" color="white" text="color:white;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila0" position="0.05 1.63 -0.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+<a-sphere id="ojo00" position="0.25 1.63 -0.7" rotation="0 0 0" radius="0.04" color="white" text="color:white;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila00" position="0.25 1.63 -0.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+</a-entity>
+<!-- avatar -->
+<!-- suelo -->
+<a-box class="ladrillo" position="0 -0.15 -5" rotation="0 0 0" width="6" height="0.05" depth="3" color="rgb(1, 55, 63)">
+</a-box>
+                  <!-- suelo princpal -->
+ <a-box id="abc1" position="0 -0.2 0" rotation="-0 0 0" width="1000" height="0.5" depth="1000" color="rgba(149, 149, 149, 0.808)" static-body>
+</a-box>
+<a-box id="abc1a1" position="0 -6.2 0" rotation="0 0 0" width="1000" height="0.5" depth="1000" color="rgba(149, 149, 149, 0.808)" static-body>
+</a-box>
+    <!--suelo <-- fin  -->
+<!-- ------------------------------------------------------------------------------------------ -->
+<!-- techo -->
+<a-box id="abc0" position="-1 25 -22" rotation="0 0 0" width="73" height="1" depth="88" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box>
+<a-box id="abc00" position="-1 24 -22" rotation="0 0 0" width="73" height="1" depth="88" color="rgba(8, 65, 98, 0.918)">
+</a-box>
+<a-box position="16 23 -7" rotation="0 0 0" width="2" height="1" depth="5" color="white">
+</a-box>
+<a-box position="-15 23 -7" rotation="0 0 0" width="2" height="1" depth="5" color="white">
+</a-box>
+<a-box position="0 23 8" rotation="0 0 0" width="2" height="1" depth="5" color="white">
+</a-box>
+<a-box position="0 23 -22" rotation="0 0 0" width="2" height="1" depth="5" color="white">
+</a-box>
+<a-box position="16 23 -37" rotation="0 0 0" width="2" height="1" depth="5" color="white">
+</a-box>
+<a-box position="-15 23 -37" rotation="0 0 0" width="2" height="1" depth="5" color="white">
+</a-box>
+    <!--techo <-- fin  -->
+<!-- ------------------------------------------------------------------------------------------ -->
+<a-plane id="abc2" position="0 20 -55" rotation="0 0 0" width="70" height="10" color="rgba(109, 109, 109, 0.808)" static-body>
+           </a-plane> 
+<a-plane id="abc3" position="35 20 -20" rotation="0 -90 0" width="70" height="10" color="rgba(8, 65, 98, 0.918)" static-body>
+           </a-plane>
+<a-plane id="abc4" position="0 20 15" rotation="0 -180 0" width="70" height="10" color="rgba(109, 109, 109, 0.808)" static-body>
+           </a-plane> 
+<a-plane id="abc5" position="-35 20 -20" rotation="0 90 0" width="70" height="10" color="rgba(8, 65, 98, 0.918)" static-body>
+           </a-plane>
+<a-plane id="abc6" position="0 1 -55" rotation="0 0 0" width="70" height="27" color="rgba(109, 109, 109, 0.808)" static-body>
+           </a-plane> 
+<a-plane id="abc7" position="35 1 -20" rotation="0 -90 0" width="70" height="27" color="rgba(8, 65, 98, 0.918)">
+           </a-plane>
+           <a-box id="abc71" position="35.5 1 -44.5" rotation="0 -90 0" width="41" height="27" color="rgba(8, 65, 98, 0.918)" static-body>
+          </a-box>
+          <a-box id="abc72" position="35.5 1 1" rotation="0 -90 0" width="39" height="27" color="rgba(8, 65, 98, 0.918)" static-body>
+          </a-box>
+          <a-box id="panelpuerta" position="35 2.3 -20" rotation="0 -90 0" width="30" height="27" color="rgba(8, 65, 98, 0.918)">
+          </a-box>
+<a-plane id="abc8" position="0 1 15" rotation="0 -180 0" width="70" height="27" color="rgba(109, 109, 109, 0.808)" static-body>
+           </a-plane> 
+<a-plane id="abc9" position="-35 1 -20" rotation="0 90 0" width="70" height="27" color="rgba(8, 65, 98, 0.918)" static-body>
+           </a-plane>
+<a-plane position="0 7 -54" rotation="0 0 0" width="30" height="15" material="opacity:0.0001;color:#1BC1A4" text="align:center;color:red;value:width:70">
+</a-plane>
+<!-- ---------------------exterior----------------------------- -->
+<a-box id="abc2ex" position="-0.5 20 -65" rotation="0 0 0" width="71.5" height="10" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box> 
+<a-box id="abc3ex" position="35 20 -22" rotation="0 -90 0" width="85" height="10" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box>
+<a-box id="abc4ex" position="-0.5 20 21" rotation="0 -180 0" width="72.5" height="10" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box> 
+<a-box id="abc5ex" position="-37 20 -22.5" rotation="0 90 0" width="86" height="10" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box>
+<a-box id="abc6ex" position="-0.5 1 -65" rotation="0 0 0" width="71.5" height="27" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box> 
+<a-box id="abc7ex" position="35 1 -22" rotation="0 -90 0" width="85" height="27" color="rgba(8, 65, 98, 0.918)">
+</a-box>
+<a-box id="abc8ex" position="-0.5 1 21" rotation="0 -180 0" width="72.5" height="27" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box> 
+<a-box id="abc9ex" position="-37 1 -22.5" rotation="0 90 0" width="86" height="27" color="rgba(8, 65, 98, 0.918)" static-body>
+</a-box>
+<!-- jardin -->
+<a-box id="jardin0" position="55 0.2 -44.5" rotation="90 -90 0" width="41" height="27" depth="0.2" material="opacity:0.6;color:green" static-body>
+</a-box>
+<a-box id="jardin1" position="55 0.2 1" rotation="90 -90 0" width="39" height="27" depth="0.2" material="opacity:0.6;color:green" static-body>
+</a-box>
+<a-box id="jardin2" position="55 0.2 -24" rotation="90 -90 0" width="0.2" height="27" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<a-box id="jardin3" position="55 0.2 -65" rotation="90 -90 0" width="0.2" height="27" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<a-box id="jardin4" position="55 0.2 20.6" rotation="90 -90 0" width="0.2" height="27" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<a-box id="jardin5" position="55 0.2 -18.5" rotation="90 -90 0" width="0.2" height="27" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<a-box id="jardin6" position="41.5 0.2 1" rotation="90 0 0" width="0.2" height="39" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<a-box id="jardin7" position="68.5 0.2 1" rotation="90 0 0" width="0.2" height="39" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<a-box id="jardin8" position="41.5 0.2 -43.5" rotation="90 0 0" width="0.2" height="39" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<a-box id="jardin9" position="68.5 0.2 -43.5" rotation="90 0 0" width="0.2" height="39" depth="0.3" material="color:rgb(70, 15, 15)" static-body>
+</a-box>
+<!-- fin jardin -->
+<!---------------------------- letrero.............. -->
+<a-box id="letrabc.corp0" position="35.5 20 0" rotation="0 -90 20" width="1" height="6" depth="1" color="red" static-body>
+</a-box>
+<a-box id="letrabc.corp1" position="35.5 20 -2.5" rotation="0 -90 -20" width="1" height="6" depth="1" color="red" static-body>
+</a-box>
+<a-box id="letrabc.corp2" position="35.5 19 -1.25" rotation="0 -90 -90" width="1" height="3" depth="1" color="red" static-body>
+</a-box>
+<a-cylinder id="letrabc.corp3" position="35.5 22 -8" rotation="0 0 -90" radius="1.33" depth="1" color="red" static-body>
+</a-cylinder>
+<a-cylinder id="letrabc.corp4" position="35.5 18 -8" rotation="0 0 -90" radius="1.66" depth="1" color="red" static-body>
+</a-cylinder>
+<a-box id="letrabc.corp5" position="35.5 20 -7" rotation="0 -90 0" width="1.5" height="7" depth="1" color="red" static-body>
+</a-box>
+<a-cylinder id="letrabc.corp6" position="35.6 22 -8" rotation="0 0 -90" radius="0.66" depth="0.1" color="rgba(8, 65, 98, 0.918)">
+</a-cylinder>
+<a-cylinder id="letrabc.corp7" position="35.6 18 -8" rotation="0 0 -90" radius="0.99" depth="0.1" color="rgba(8, 65, 98, 0.918)">
+</a-cylinder>
+<a-cylinder id="letrabc.corp8" position="35.5 20 -14" rotation="0 0 -90" radius="3.66" depth="1" color="red" static-body>
+</a-cylinder>
+<a-cylinder id="letrabc.corp9" position="35.6 20 -15" rotation="0 0 -90" radius="3.33" depth="0.1" color="rgba(8, 65, 98, 0.918)">
+</a-cylinder>
+<a-cylinder id="letrabc.corp10" position="35.5 17 -18" rotation="0 0 -90" radius="0.66" depth="1" color="red">
+</a-cylinder>
+<a-cylinder id="letrabc.corp11" position="35.5 20 -24" rotation="0 0 -90" radius="3.66" depth="1" color="red" static-body>
+</a-cylinder>
+<a-cylinder id="letrabc.corp12" position="35.6 20 -24.5" rotation="0 0 -90" radius="3.33" depth="0.1" color="rgba(8, 65, 98, 0.918)">
+</a-cylinder>
+<a-cylinder id="letrabc.corp13" position="35.5 20 -32.5" rotation="0 0 -90" radius="3.33" depth="1" color="red">
+</a-cylinder>
+<a-cylinder id="letrabc.corp14" position="35.6 20 -32.5" rotation="0 0 -90" radius="2" depth="0.1" color="rgba(8, 65, 98, 0.918)">
+</a-cylinder>
+<a-cylinder id="letrabc.corp15" position="35.5 22 -40.5" rotation="0 0 -90" radius="2" depth="1" color="red">
+</a-cylinder>
+<a-box id="letrabc.corp16" position="35.5 20 -39" rotation="0 -90 0" width="1" height="6" depth="1" color="red" static-body>
+</a-box>
+<a-box id="letrabc.corp17" position="35.5 19 -41" rotation="0 -90 -30" width="1" height="4" depth="1" color="red" static-body>
+</a-box>
+<a-cylinder id="letrabc.corp18" position="35.6 22 -40.5" rotation="0 0 -90" radius="1.3" depth="0.1" color="rgba(8, 65, 98, 0.918)">
+</a-cylinder>
+<a-box id="letrabc.corp19" position="35.5 20 -46" rotation="0 -90 0" width="1" height="6" depth="1" color="red" static-body>
+</a-box>
+<a-cylinder id="letrabc.corp20" position="35.6 22 -47.5" rotation="0 0 -90" radius="1.3" depth="0.1" color="rgba(8, 65, 98, 0.918)">
+</a-cylinder>
+<a-cylinder id="letrabc.corp21" position="35.5 22 -47.5" rotation="0 0 -90" radius="2" depth="1" color="red">
+</a-cylinder>
+<!-- ---------------------------fin exterior...----------------------------------------------- -->
+      <!--  -----------------vias  ...------------------ -->
+      <a-plane id="via0" position="-13 -0.25 -2.5" rotation="0 0 0" width="20" height="0.2" color="gray" static-body>
+      </a-plane>
+      <a-plane id="via1" position="-23 -0.25 -18" rotation="0 90 0" width="62" height="0.2" color="gray" static-body>
+      </a-plane>
+<!-- -----------------------------vias   fin------------------------------- -->
+<!-- .-----------------------tienda regristro escaleras--------------------------- -->
+<a-box id="paredintder" position="25 1 -10" rotation="0 -90 0" width="60" height="27" depth="1" material="opacity:0.8;color:rgba(28, 96, 98, 0.877)">
+</a-box>
+<a-box id="paredintderiz" position="30 1 -40" rotation="0 0 0" width="10" height="27" depth="1" material="opacity:0.8;color:rgba(28, 96, 98, 0.877)" static-body>
+</a-box>
+<a-box id="techointder" position="30 14.1 -10" rotation="90 90 0" width="60" height="10" depth="1" material="opacity:0.8;color:rgba(28, 96, 98, 0.877)" static-body>
+</a-box>
+<a-box id="suelointder" position="30 -0.2 -10" rotation="90 90 0" width="60" height="10" depth="0.1" material="opacity:0.8;color:rgba(0, 136, 255, 0.281);" static-body>
+</a-box>
+<a-box id="paredintderm" position="30 1 -3" rotation="0 0 0" width="10" height="27" depth="1" material="opacity:0.8;color:rgba(28, 96, 98, 0.877)" static-body>
+</a-box>
+<a-box id="puertaizq" position="25 2 -35" rotation="0 90 0" width="8" height="5" depth="1.5" material="opacity:0.8;color:blue">
+</a-box>
+<a-box id="puertader" position="25 2 10" rotation="0 90 0" width="8" height="5" depth="1.5" material="opacity:0.8;color:blue">
+</a-box>
+<a-box id="paneliniz" position="24 1 -18" rotation="0 -90 0" width="25" height="27" depth="1" material="opacity:0.8;color:rgba(28, 96, 98, 0.877)" static-body>
+</a-box>
+<a-box id="panelinder" position="24 1 1" rotation="0 -90 0" width="10" height="27" depth="1" material="opacity:0.8;color:rgba(28, 96, 98, 0.877)" static-body>
+</a-box>
+<!-- --------------------------------------tienda------------------------------ -->
+<a-box id="mesatienda0" position="30 0.5 1" rotation="0 0 0" width="8" height="1" depth="1" material="opacity:0.8;color:white" static-body>
+</a-box>
+<a-box id="estante" position="33.4 0.2 8" rotation="0 90 0" width="12" height="0.5" depth="1" material="opacity:0.8;color:white" static-body>
+</a-box>
+<a-box id="estante2" position="33.4 1.4 8" rotation="0 90 0" width="10.5" height="0.2" depth="1" material="opacity:0.8;color:white" static-body>
+</a-box>
+<a-box id="estante3" position="33.4 2.4 8" rotation="0 90 0" width="10.5" height="0.2" depth="1" material="opacity:0.8;color:white" static-body>
+</a-box>
+<a-box id="estante4" position="34 2 8" rotation="0 90 0" width="12" height="3.5" depth="0.2" material="opacity:0.8;color:white" static-body>
+</a-box>
+<!-- -------------------------------fin----tienda------------------------------ -->
+<!-- -------------------------------escaleras----------------------- -->
+<a-box id="escaleraspric0" position="23.8 1.9 -44" rotation="70 90 0" width="6" height="12" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric1" position="32 3.8 -48" rotation="90 0 0" width="6" height="14" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric2" position="23.2 5.5 -51" rotation="-75 90 0" width="6" height="12" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric3" position="15.25 7 -48" rotation="90 0 0" width="6" height="14" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric4" position="24 9 -44" rotation="70 90 0" width="6" height="12" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric5" position="32 11 -48" rotation="90 0 0" width="6" height="14" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric6" position="23.9 13 -51" rotation="-72.5 90 0" width="6" height="12" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric7" position="15.85 14.8 -48" rotation="90 0 0" width="6" height="14" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric8" position="23.5 14.8 -44" rotation="90 90 0" width="6" height="12" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<a-box id="escaleraspric9" position="31.5 14.8 -46.5" rotation="90 0 0" width="6" height="16" depth="0.1" material="opacity:0.8;color:red" static-body>
+</a-box>
+<!-- .----------------fin --------tienda regristro escaleras---------fin------------------------------ -->
+<!-- robot       -->
+      <a-cylinder id="cilindro0" position="-23 0 -2.5" rotation="0 0 0" height="0.5" radius="0.5" color="white" static-body>
+        <a-animation id="mover0" attribute="position" to="-23 0 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro1" position="-23 0.5 -2.5" rotation="0 0 0" height="0.25" radius="0.5" color="white" static-body>
+        <a-animation id="mover1" attribute="position" to="-23 0.5 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro2" position="-23 0.25 -2.5" rotation="0 0 0" height="0.5" radius="0.2" color="white" static-body>
+        <a-animation id="mover2" attribute="position" to="-23 0.25 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro3" position="-23 0.75 -2.5" rotation="0 0 0" height="0.5" radius="0.3" color="white" static-body>
+        <a-animation id="mover3" attribute="position" to="-23 0.75 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro4" position="-23 1 -2.5" rotation="90 0 0" height="0.6" radius="0.3" color="white" static-body>
+        <a-animation id="mover4" attribute="position" to="-23 1 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro5" position="-23 1.75 -2.5" rotation="0 0 0" height="1.5" radius="0.5" color="white" static-body>
+        <a-animation id="inclinar5a1" attribute="position" to="-22.85 1.75 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+        <a-animation id="inclinar5" attribute="rotation" to="0 0 -10" repeat="0" easing="linear" dur="2000"></a-animation>
+        <a-animation id="mover5" attribute="position" to="-23 1.75 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro6" position="-23 2.75 -2.5" rotation="0 0 0" height="0.5" radius="0.3" color="white" static-body>
+        <a-animation id="mover6" attribute="position" to="-23 2.75 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+        <a-animation id="inclinar6a1" attribute="position" to="-22.7 2.75 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+        <a-animation id="inclinar6" attribute="rotation" to="0 0 -10" repeat="0" easing="linear" dur="2000"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro7" position="-23 3.5 -2.5" rotation="90 0 0" height="0.6" radius="0.5" color="white" static-body>
+        <a-animation id="mover7" attribute="position" to="-23 3.5 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+        <a-animation id="inclinar7a1" attribute="position" to="-22.65 3.5 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro8" position="-24 3.5 -2.5" rotation="0 0 90" height="2" radius="0.4" color="white" static-body>
+        <a-animation id="mover8" attribute="position" to="-24 3.5 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+        <a-animation id="inclinar8a1" attribute="position" to="-23.7 3.7 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+        <a-animation id="inclinar8" attribute="rotation" to="0 0 80" repeat="0" easing="linear" dur="2000"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro9" position="-25.75 3.5 -2.5" rotation="0 0 90" height="1.5" radius="0.2" color="white" static-body>
+        <a-animation id="mover9" attribute="position" to="-25.75 3.5 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+        <a-animation id="inclinar9" attribute="rotation" to="0 0 80" repeat="0" easing="linear" dur="2000"></a-animation>
+        <a-animation id="inclinar9a1" attribute="position" to="-25.25 4 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+      </a-cylinder>   
+      <a-cylinder id="cilindro10" position="-26.75 3.5 -2.5" rotation="90 0 0" height="0.2" radius="0.3" color="white" static-body>
+        <a-animation id="mover10" attribute="position" to="-26.75 3.5 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+        <a-animation id="inclinar10a1" attribute="position" to="-26.25 4.15 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+      </a-cylinder>
+      <a-cylinder id="cilindro11" position="-26.75 3 -2.5" rotation="0 0 0" height="0.8" radius="0.2" color="white" static-body>
+        <a-animation id="mover11" attribute="position" to="-26.75 3 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+        <a-animation id="inclinar11a1" attribute="position" to="-26.25 3.65 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+      </a-cylinder>
+       <a-cylinder id="cilindro12" position="-26.75 2.5 -2.5" rotation="0 0 0" height="0.2" radius="0.5" color="white" static-body>
+        <a-animation id="mover12" attribute="position" to="-26.75 2.5 -2.5" direction="next" repeat="false" easing="linear" dur="0"></a-animation>
+        <a-animation id="inclinar12a1" attribute="position" to="-26.25 3.25 -2.5" direction="next" repeat="0" easing="linear" dur="2000"></a-animation>
+      </a-cylinder>
+     <a-box id="boton1" position="-4 0.55 -4" rotation="0 0 0" width="0.1" height="0.1" depth="0.1" material="color:black" static-body>
+      <a-animation id="rotarbtn1" attribute="position" to="0 0.55 -4" repeat="0" easing="linear" dur="20000"></a-animation>
+     </a-box>
+   <!-- ---------------------------------extras robot------------------------------------- -->
+<!--asistente principal  -->
+<a-box id="zapato" position="0 -0.05 -5" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="zapato2" position="0.3 -0.05 -5" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pierna" position="0 0.1 -5" rotation="0 0 -5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pierna2" position="0.3 0.1 -5" rotation="0 0 5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon" position="0 0.5 -5" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon2" position="0.3 0.5 -5" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon3" position="0.15 0.7 -5" rotation="0 0 0" width="0.5" height="0.2" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="cuerpo" position="0.15 1 -5" rotation="0 0 0" width="0.6" height="0.6" depth="0.35" color="rgb(185, 0, 0)" static-body>
+</a-box>
+<a-box id="brazo" position="-0.2 0.95 -5" rotation="0 0 -15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="brazo2" position="0.5 0.95 -5" rotation="0 0 15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<!--  --------------------cabeza 0.15 1.6 -5 ------------------------------------------>
+<a-sphere id="cabeza" position="0.15 1.6 -5" rotation="0 0 0" radius="0.33" material="color:rgb(255, 175, 71);roughness:1" text="color:yellow;opacity:0;" static-body>
+</a-sphere>
+<a-sphere id="ojo" position="0.05 1.63 -4.7" rotation="0 0 0" radius="0.04" color="white" text="color:yellow;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila" position="0.05 1.63 -4.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+<a-sphere id="ojo2" position="0.25 1.63 -4.7" rotation="0 0 0" radius="0.04" color="white" text="color:yellow;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila2" position="0.25 1.63 -4.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+<a-box id="boca" position="0.15 1.5 -4.68" rotation="0 90 0" width="0.01" height="0.03" depth="0.1" color="red" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<!-------------------------------------------- mesa------------------ -->
+<a-box id="tabla0" position="0 0.5 -4" rotation="90 0 0" width="5" height="1" depth="0.1" color="red" static-body>
+</a-box>
+<a-box id="pata1" position="-2.4 0.25 -4.4" rotation="0 0 0" width="0.1" height="0.58" depth="0.1" color="red" static-body>
+</a-box>
+<a-box id="pata2" position="-2.4 0.25 -3.6" rotation="0 0 0" width="0.1" height="0.58" depth="0.1" color="red" static-body>
+</a-box>
+<a-box id="pata3" position="2.4 0.25 -4.4" rotation="0 0 0" width="0.1" height="0.58" depth="0.1" color="red" static-body>
+</a-box>
+<a-box id="pata4" position="2.4 0.25 -3.6" rotation="0 0 0" width="0.1" height="0.58" depth="0.1" color="red" static-body>
+</a-box>
+<!--------------------------------------- mesa fin---------------------- -->
+<!--------------------------------------------- mesa 2------------------------------------ -->
+<a-box id="tabla02" position="26 0.8 -9" rotation="90 90 0" width="5" height="1.2" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="pata12" position="26 0.39 -11.5" rotation="0 0 0" width="1.2" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="pata13" position="26 0.39 -6.5" rotation="0 0 0" width="1.2" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="tabla022" position="25.4 0.4 -9" rotation="0 90 0" width="5" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="ordenata2" position="25.6 1.6 -9" rotation="-5 90 0" width="1.5" height="0.8" depth="0.05" color="black" static-body>
+</a-box>
+<a-box id="ordenata22" position="26.4 0.9 -9" rotation="90 90 0" width="0.8" height="0.3" depth="0.05" color="black" static-body>
+</a-box>
+<a-box id="pataord2" position="25.6 1.1 -9" rotation="0 0 0" width="0.05" height="0.4" depth="0.05" color="gray" static-body>
+</a-box>
+<a-cylinder id="baseord2" position="25.6 0.9 -9" rotation="0 0 0" radius="0.15" height="0.1" color="gray" static-body>
+</a-cylinder>
+<!-- ----------------------------------------mesa 4------------------------------------------ -->
+<a-box id="tabla04" position="26 0.8 -15" rotation="90 90 0" width="5" height="1.2" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="pata14" position="26 0.39 -17.5" rotation="0 0 0" width="1.2" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="pata144" position="26 0.39 -12.5" rotation="0 0 0" width="1.2" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="tabla024" position="25.4 0.4 -15" rotation="0 90 0" width="5" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="ordenata4" position="25.6 1.6 -15" rotation="-5 90 0" width="1.5" height="0.8" depth="0.05" color="black" static-body>
+</a-box>
+<a-box id="ordenata24" position="26.4 0.9 -15" rotation="90 90 0" width="0.8" height="0.3" depth="0.05" color="black" static-body>
+</a-box>
+<a-box id="pataord4" position="25.6 1.1 -15" rotation="0 0 0" width="0.05" height="0.4" depth="0.05" color="gray" static-body>
+</a-box>
+<a-cylinder id="baseord4" position="25.6 0.9 -15" rotation="0 0 0" radius="0.15" height="0.1" color="gray" static-body>
+</a-cylinder>
+<!-- ------------------------------------------------mesa4 fin------------------------------------------------------------------------ -->
+<!---------------------------------------- mesa 6------------------------------------- -->
+<a-box id="tabla06" position="26 0.8 -21" rotation="90 90 0" width="5" height="1.2" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="pata16" position="26 0.39 -23.5" rotation="0 0 0" width="1.2" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="pata166" position="26 0.39 -18.5" rotation="0 0 0" width="1.2" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="tabla26" position="25.4 0.4 -21" rotation="0 90 0" width="5" height="0.8" depth="0.1" color="white" static-body>
+</a-box>
+<a-box id="ordenata26" position="25.6 1.6 -21" rotation="-5 90 0" width="1.5" height="0.8" depth="0.05" color="black" static-body>
+</a-box>
+<a-box id="ordenata266" position="26.4 0.9 -21" rotation="90 90 0" width="0.8" height="0.3" depth="0.05" color="black" static-body>
+</a-box>
+<a-box id="pataord6" position="25.6 1.1 -21" rotation="0 0 0" width="0.05" height="0.4" depth="0.05" color="gray" static-body>
+</a-box>
+<a-cylinder id="baseord6" position="25.6 0.9 -21" rotation="0 0 0" radius="0.15" height="0.1" color="gray" static-body>
+</a-cylinder>
+<!-- ------------------------------------mesa6 fin---------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------------------- -->
+<!-- ------------------------------------vendedor-------------------------------------------------------  -->
+<a-box id="zapato22" position="30 -0.05 -1" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="zapato222" position="30.3 -0.05 -1" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>  
+<a-box id="pierna22" position="30 0.1 -1" rotation="0 0 -5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pierna222" position="30.3 0.1 -1" rotation="0 0 5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon22" position="30 0.5 -1" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon222" position="30.3 0.5 -1" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon32" position="30.15 0.7 -1" rotation="0 0 0" width="0.5" height="0.2" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="cuerpo2" position="30.15 1 -1" rotation="0 0 0" width="0.6" height="0.6" depth="0.35" color="rgb(185, 0, 0)" static-body>
+</a-box>
+<a-box id="brazo22" position="29.8 0.95 -1" rotation="0 0 -15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="brazo222" position="30.5 0.95 -1" rotation="0 0 15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<!--  --------------------cabeza 2 ------------------------------------------>
+<a-sphere id="cabeza2" position="30.15 1.6 -1" rotation="0 0 0" radius="0.33" material="color:rgb(255, 175, 71);roughness:1" text="color:yellow;opacity:0;" static-body>
+</a-sphere>
+<a-sphere id="ojo22" position="30.05 1.63 -0.7" rotation="0 0 0" radius="0.04" color="white" text="color:white;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila22" position="30.05 1.63 -0.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+<a-sphere id="ojo222" position="30.25 1.63 -0.7" rotation="0 0 0" radius="0.04" color="white" text="color:white;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila222" position="30.25 1.63 -0.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+<a-box id="boca2" position="30.15 1.5 -0.68" rotation="0 90 0" width="0.01" height="0.03" depth="0.1" color="red" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<!---------------------------vendedor fin------------------------------------------------------------>
+              <!-- tren -->
+ <a-box id="tren" position="-27 1.4 10" rotation="-90 0 0" width="2.5" height="6" depth="2.5" visible="true" static-body>
+  <a-animation id="tren1" attribute="position" to="-27 1.4 -50" direction="next" repeat="0" easing="linear" dur="10000"></a-animation>
+  <!-- <a-animation id="abc1234min" attribute="position" to="-27 1.4 -2.5" direction="next" repeat="0" easing="linear" dur="6000"></a-animation> -->
+  </a-box>
+<!-- --------------------------tren fin ------------------------------ -->
+                 <!-- vias del tren -->
+<a-box position="-26 0.1 -20" rotation="-90 0 0" width="0.5" height="65" depth="0.2" color="rgb(95, 5, 0)">
+</a-box>
+<a-box position="-28 0.1 -20" rotation="-90 0 0" width="0.5" height="65" depth="0.2" color="rgb(95, 5, 0)">
+</a-box>
+<a-box position="-27 0.2 10" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 8" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 6" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 4" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 0" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -2" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -4" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -6" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -10" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -12" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -14" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -16" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -20" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -22" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -24" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -28" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -30" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -32" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -34" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -38" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -40" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -42" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -44" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -48" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box position="-27 0.2 -50" rotation="-90 0 0" width="1.6" height="0.7" depth="0.2" color="rgb(90, 10, 0)" static-body>
+</a-box>
+<a-box id="zapato1" position="-0.05 25.65 -1" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="zapato11" position="0.35 25.65 -1" rotation="0 0 0" width="0.2" height="0.1" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pierna1" position="0 26.1 -1" rotation="0 0 -5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pierna11" position="0.3 26.1 -1" rotation="0 0 5" width="0.1" height="0.8" depth="0.1" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon1" position="0 26.5 -1" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon11" position="0.3 26.5 -1" rotation="0 0 0" width="0.25" height="0.5" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="pantalon111" position="0.15 26.7 -1" rotation="0 0 0" width="0.5" height="0.2" depth="0.3" color="rgb(64, 30, 255)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="cuerpo1" position="0.15 27 -1" rotation="0 0 0" width="0.6" height="0.6" depth="0.35" color="rgb(185, 0, 0)" text="color:black" static-body>
+</a-box>
+<a-box id="brazo1" position="-0.2 26.95 -1" rotation="0 0 -15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<a-box id="brazo11" position="0.5 26.95 -1" rotation="0 0 15" width="0.1" height="0.7" depth="0.3" color="rgb(255, 175, 71)" text="color:yellow;opacity:0;" static-body>
+</a-box>
+<!--  --------------------cabeza 2 ------------------------------------------>
+<a-sphere id="cabeza1" position="0.15 27.6 -1" rotation="0 0 0" radius="0.33" material="color:rgb(255, 175, 71);roughness:1" text="color:yellow;opacity:0;" static-body>
+</a-sphere>
+<a-sphere id="ojo1" position="0.05 27.63 -0.7" rotation="0 0 0" radius="0.04" color="white" text="color:white;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila1" position="0.05 27.63 -0.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+<a-sphere id="ojo11" position="0.25 27.63 -0.7" rotation="0 0 0" radius="0.04" color="white" text="color:white;opacity:0;" static-body>
+</a-sphere>
+        <a-sphere id="pupila11" position="0.25 27.63 -0.67" rotation="0 0 0" radius="0.02" color="black" text="color:yellow;opacity:0;" static-body>
+        </a-sphere>
+<a-box id="boca1" position="0.15 27.5 -0.68" rotation="0 90 0" width="0.01" height="0.03" depth="0.1" color="red" text="color:yellow;opacity:0;" static-body>
+</a-box>
+ <a-sphere id="sol" position="0 10000 0" rotation="0 0 0" radius="1020" material="color:yellow">
+</a-sphere>
+<!-- fin sol -->
+<!-- marte -->
+<a-sphere id="marte" position="5000 5000 1000" rotation="0 0 0" radius="120" material="opacity:0.2;color:rgb(134, 21, 21)" static-body>
+</a-sphere>
+<a-sphere id="martes" position="5000 5000 1000" rotation="0 0 0" radius="120.2" material="color:rgb(134, 21, 21)">
+</a-sphere>
+<!-- rascacielos -->
+<!-- <a-box position="210 100 -210" rotation="0 0 0" width="50" height="200" depth="50" color="rgba(24, 69, 129, 0.808)"></a-box> -->
+  <a-box position="210 5 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 10 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 15 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 20 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 25 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 30 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 35 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 40 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 45 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 50 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 55 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 60 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 65 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 70 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 75 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 80 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 85 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 90 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 95 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 100 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+
+  <a-box position="210 105 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 110 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 115 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 120 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 125 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 130 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 135 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 140 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 145 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 150 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 155 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 160 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 165 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 170 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 175 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 180 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 185 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 190 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 195 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 200 -210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+ 
+  <a-box position="185 100 -210" rotation="0 90 0" width="50" height="200" depth="1" material="color:rgba(8, 65, 98, 0.918);opacity:0.7" static-body></a-box>
+  <a-box position="210 100 -235" rotation="0 0 0" width="50" height="200" depth="1" material="color:rgba(8, 65, 98, 0.918);opacity:0.7" static-body></a-box>
+  <a-box position="235 100 -210" rotation="0 90 0" width="50" height="200" depth="1" material="color:rgba(8, 65, 98, 0.918);opacity:0.7" static-body></a-box>
+  <a-box position="224 100 -185" rotation="0 0 0" width="22.5" height="200" depth="1" material="color:rgba(8, 65, 98, 0.918);opacity:0.7" static-body></a-box>
+  <a-box position="196 100 -185" rotation="0 0 0" width="22.5" height="200" depth="1" material="color:rgba(8, 65, 98, 0.918);opacity:0.7" static-body></a-box>
+  
+  <a-box position="210 100 -180" rotation="0 0 0" width="5" height="195" depth="1" material="color:rgba(7, 61, 90, 0.820);opacity:0.7" static-body></a-box>
+  <a-box position="212.5 100 -182.5" rotation="0 90 0" width="5" height="195" depth="1" material="color:rgba(7, 61, 90, 0.820);opacity:0.7" static-body></a-box>
+  <a-box position="207.5 100 -182.5" rotation="0 90 0" width="5" height="195" depth="1" material="color:rgba(7, 61, 90, 0.820);opacity:0.7" static-body></a-box>
+  <!-- rascacielos -->
+  <a-box position="210 5 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 10 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 15 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 20 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 25 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 30 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 35 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 40 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 45 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 50 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 55 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 60 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 65 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 70 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 75 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 80 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 85 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 90 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 95 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 100 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+
+  <a-box position="210 105 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 110 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 115 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 120 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 125 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 130 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 135 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 140 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 145 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 150 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 155 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 160 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 165 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 170 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 175 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 180 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 185 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 190 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 195 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+  <a-box position="210 200 210" rotation="0 0 0" width="50" height="1" depth="50" color="rgba(92, 93, 93, 0.808)" static-body></a-box>
+
+  <a-box position="185 100 210" rotation="0 90 0" width="50" height="200" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+  <a-box position="210 100 235" rotation="0 0 0" width="50" height="200" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+  <a-box position="235 100 210" rotation="0 90 0" width="50" height="200" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+  <a-box position="224 100 185" rotation="0 0 0" width="22.5" height="200" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+  <a-box position="196 100 185" rotation="0 0 0" width="22.5" height="200" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+  
+  <a-box position="210 100 180" rotation="0 0 0" width="5" height="195" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+  <a-box position="212.5 100 182.5" rotation="0 90 0" width="5" height="195" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+  <a-box position="207.5 100 182.5" rotation="0 90 0" width="5" height="195" depth="1" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+
+<!-- nave   -->
+<a-box position="74 0.4 -12" rotation="0 90 0" width="1.5" height="1.05" depth="1.05" material="color:rgba(117, 10, 10, 0.883);opacity:0.7"></a-box>
+<a-box id="nave" position="74 1 -11" rotation="0 90 0" width="1.5" height="1.05" depth="0.2" material="color:rgba(117, 10, 10, 0.883);opacity:0.1"></a-box>
+<a-box id="navity" position="74 -0.05 -11" rotation="0 0 0" width="1.5" height="0.05" depth="1.5" material="color:rgba(117, 10, 10, 0.883)" static-body></a-box>
+<a-box position="76 0.4 -12" rotation="0 90 0" width="2.5" height="1.05" depth="0.2" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+<a-box position="75 0.4 -12.6" rotation="0 0 0" width="1.5" height="1.05" depth="0.2" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+<a-box position="75 0.4 -10" rotation="0 0 0" width="1.5" height="1.05" depth="0.2" material="color:rgba(117, 10, 10, 0.883);opacity:0.7" static-body></a-box>
+
+
+<button style="display:position;top:100px;background-color:red; width:50px;height:50px;">
+  <input type="text" placeholder="abc">
+  </button>
+</a-scene>
+</body>
+</html>
+  
